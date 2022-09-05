@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "_Layout";
+}
+<link rel="stylesheet" type="text/css" href="~/css/left.css">
+<div class="row">
+      <div class="trending-wrapper">
+        <div class="heading text-center text-dark">
+            <h4>Wel come To Our Page.</h4>
+            </div>
+        @foreach(var items in Model){
+        <div class="trending-item text-dark font-weight-bold mt-5">
+              <h6>Tournment_Name:@items.name</h6>
+                      <h6>Tournment_Type:@items.tournment_type</h6>
+                      <h6>Sport_Name:@items.sport_name</h6>
+                      <h6>Date:@items.date</h6>
+                      <h6>Start_Time:@items.start_time</h6>
+                      <h6>End_Time:@items.end_time</h6>
+                      <a asp-action="FindId" asp-controller="Home"class="btn btn-primary btn-sm">Book_Now</a>
+         </div>
+        }
+      </diV>
+   </div>        

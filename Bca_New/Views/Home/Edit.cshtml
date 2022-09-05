@@ -1,0 +1,52 @@
+﻿
+@model Bca_New.Models.Players;
+@{
+    Layout = "Admin";
+}
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+    <form method="POST" asp-action="Updated" asp-controller="Home">
+        <input type="text" value="@Model.id" name="id" /> 
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label float-left">Tournment_name</label>
+            <input type="text" class="form-control" name="name" aria-describedby="title"value="@Model.name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label float-left">Sport_Name</label>
+            <input type="text" class="form-control" name="sport_name"value="@Model.sport_name">
+        </div>
+        <div class="mb-3">
+            <label class="font-weight-bold text-dark float-left">Tournment_Type:</label>
+            <select class="form control" id="tournment_Type" name="tournment_type"value= @Model.tournment_type>
+                <option selected>Tournment_Type</option>
+                <option value="Test Matches">Test Matches.</option>
+                <option value="One Day Internationals">One Day Internationals</option>
+                <option value="Twenty20 Internationals">Twenty20 Internationals</option>
+
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label float-left">Tournment_Date</label>
+            <input type="date" class="form-control" id="date" name="date" asp-for="@Model.date"aria-describedby="title">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label float-left">Start_Time</label>
+            <input type="time" class="form-control" id="startt_time" name="start_time"asp-for="@Model.start_time">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label float-left">End_Time</label>
+            <input type="time" class="form-control" id="end_time" name="end_time"asp-for="@Model.end_time">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label float-left">Status</label>
+            <input type="text" class="form-control" id="status" name="status"value="@Model.status">
+        </div>
+
+        <a href="#" button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</a>
+        <button type="submit" class="btn btn-primary">Updated</button>
+    </form>
+</div>

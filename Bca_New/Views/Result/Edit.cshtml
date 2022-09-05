@@ -1,0 +1,27 @@
+﻿@model Bca_New.Models.Result
+@{
+    Layout = "Admin";
+}
+<form method="post" asp-action="Updated" asp-controller="Result">
+    <input type="hidden" value="@Model.id" name="id" />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Club_Name</label>
+            <input type="text" class="form-control" id="name"name=name placeholder="Club name"value="@Model.name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Rank</label>
+            <input type="number" class="form-control" id="rank"name="rank"value="@Model.rank" placeholder="rank...">
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="inputState">Tournment_Type</label>
+        <select id="inputState" class="form-control"name="tournment_name"value="@Model.tournment_name">
+            <option selected>Tournment_Type</option>
+            <option value="Test Matches">Test Matches.</option>
+            <option value="One Day Internationals">One Day Internationals</option>
+            <option value="Twenty20 Internationals">Twenty20 Internationals</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

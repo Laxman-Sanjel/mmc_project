@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "Admin";
+}
+
+<header>
+    <link rel="stylesheet" type="text/css" href="~/css/nav.css">
+    <style type="text/css">
+        select {
+            width: 100%;
+            padding: 4px 10px;
+            margin: 3px 0;
+        }
+    </style>
+    <div class="page-content p-0 mr-1" id="content">
+</header>
+
+<body class="hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+
+    <div class="wrapper">
+
+        <div class="content-wrapper">
+
+            <div class="card text-center">
+
+                <div class="card-body mt-5">
+                    <h3>About Sport Information.</h3>
+
+                    <div class="card-header d-flex justify-content-end">
+                        @*<button class="btn btn-success" id="addRoom">Add Info</button>*@
+                        <button class="btn btn-primary text-dark btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Add New</button>
+                    </div>
+
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>SN</th>
+                                <th>Tournment_Name</th>
+                                <th>club_name</th>
+                                <th>rank</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int count = 1;
+                            }
+                            @foreach (var items in Model)
+                            {
+                                <tr>
+                                    <td>@count</td>
+
+                                    <td>@items.tournment_name</td>
+                                    <td>@items.name</td>
+                                    <td>@items.rank</td>
+                                    <td>
+                                        <a asp-action="Edit"asp-controller="Result" asp-route-id="@items.id" class=" btn btn-warning">Edit
+                                        <input type="hidden"name="id"></a>
+
+                                        <a class=" btn btn-danger" asp-action="Delete" asp-controller="Result" asp-route-id="@items.id">Delete</a>
+                                    </td>
+                                    @{
+                                        count++;
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                    @*Insert new*@
+
+                    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="POST" asp-action="Insert" asp-controller="Result">
+                                    <div class="modal-body mx-3">
+
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label float-left">Club_Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" aria-describedby="title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label float-left">Club_Name</label>
+                                            <input type="number" class="form-control" id="rank" name="rank">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-weight-bold text-dark float-left">Tournment_Name:</label>
+                                            <select class="form control" id="tournment_name" name="tournment_name">
+                                                <option selected>Tournment_Type</option>
+                                                <option value="Test Matches">Test Matches.</option>
+                                                <option value="One Day Internationals">One Day Internationals</option>
+                                                <option value="Twenty20 Internationals">Twenty20 Internationals</option>
+
+                                            </select>
+                                        </div>
+                                       
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button class="btn btn-primary">Insert</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    
+</body>
+
+
+
+
+
+
+

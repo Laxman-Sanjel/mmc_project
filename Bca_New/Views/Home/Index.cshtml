@@ -1,0 +1,156 @@
+﻿
+@{
+    Layout = "Admin";
+}
+
+ <header>
+    <link rel="stylesheet" type="text/css" href="~/css/nav.css">
+<style type="text/css">
+        select 
+	   {
+			width: 100%;
+			padding: 4px 10px;
+			margin: 3px 0;
+	    }
+      </style>
+    <div class="page-content p-0 mr-1" id="content">
+</header>
+
+<body class="hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    
+ 
+<div class="wrapper">
+
+<div class="content-wrapper">
+   
+<div class="card text-center">
+                
+  <div class="card-body mt-5">
+                    <h3>About Sport Information.</h3>
+                  
+  <div class="card-header d-flex justify-content-end">
+   @*<button class="btn btn-success" id="addRoom">Add Info</button>*@
+   <button class="btn btn-primary text-dark btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Add New</button>
+    </div>
+                    
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th>SN</th>
+                <th>T_name</th>
+                <th>T_Type</th>
+                <th>S_name</th>
+                <th>date</th>
+                <th>S_time</th>
+                <th>E_time</th>
+                <th>Status</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count=1;
+                }
+                @foreach (var items in Model){
+                  <tr>
+                             <td>@count</td>
+                      <td>@items.name</td>
+                      <td>@items.tournment_type</td>
+                      <td>@items.sport_name</td>
+                      <td>@items.date</td>
+                      <td>@items.start_time</td>
+                      <td>@items.end_time</td>
+                       <td>@items.status</td>
+                
+                      <td>
+                      <a  asp-action="Edit" name="id" asp-route-id="@items.id" asp-controller="Home" class=" btn btn-warning">Edit</a>
+                          
+                          
+                      <a class=" btn btn-danger" asp-action="Delete" asp-route-id="@items.id">Delete</a>
+                      </td>
+                        @{
+                            count++;
+                        }
+                  </tr>
+                  }
+            </tbody>
+        </table>
+                       
+                   
+        @*Insert new*@
+
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" asp-action="Form1"asp-controller="Home">
+                <div class="modal-body mx-3">
+                    
+                    <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label float-left">Tournment_name</label>
+                                    <input type="text" class="form-control" id="name" name="name" aria-describedby="title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label float-left">Sport_Name</label>
+                                    <input type="text" class="form-control" id="sport_name" name="sport_name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="font-weight-bold text-dark float-left">Tournment_Type:</label>
+                                    <select class="form control" id="tournment_Type" name="tournment_type">
+                                        <option selected>Tournment_Type</option>
+                                        <option value="Test Matches">Test Matches.</option>
+                                        <option value="One Day Internationals">One Day Internationals</option>
+                                        <option value="Twenty20 Internationals">Twenty20 Internationals</option>
+
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label float-left">Tournment_Date</label>
+                                    <input type="date" class="form-control" id="date" name="date" aria-describedby="title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label float-left">Start_Time</label>
+                                    <input type="time" class="form-control" id="startt_time" name="start_time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label float-left">End_Time</label>
+                                    <input type="time" class="form-control" id="end_time" name="end_time">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label float-left">Status</label>
+                                    <input type="text" class="form-control" id="status" name="status">
+                                </div>
+                                @*<div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label float-left">Image</label>
+                                    <input type="image" class="form-control" id="image" name="image">
+                                </div>*@
+                </div>
+                
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-primary">Insert</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+  

@@ -1,0 +1,45 @@
+﻿@model Bca_New.Models.Registers;
+@{
+    Layout = "_Layout";
+}
+<div class="text-primary">
+<h5>Registration Form</h5>
+</div>
+<form method="POST" asp-action="RegUser" asp-controller="Home" class="box shadow-sm bg-light mt-4">
+    <div class="col-md-6 col-sm-4 col-xs-12">
+
+        <div class="form-outline mb-4">
+            <input asp-for="name" type="text" id="name" name="name" class="form-control"placeholder="Enter Your Name" required/>
+            <label asp-for="name" class="form-label" for="form2Example1">Username</label>
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="email" name="email" class="form-control"placeholder="Enter Your Name" required/>
+            <label class="form-label" for="form2Example1">Email address</label>
+            <span asp-validation-for="email" class="text-danger"></span>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="password" name="password" class="form-control"placeholder="Enter Your Password" required/>
+            <label class="form-label" for="form2Example2">Password</label>
+            <span asp-validation-for="password" class="text-danger"></span>
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+        <!-- Submit button -->
+        <div class="modal-footer d-flex justify-content-center">
+                   <button class="btn btn-primary">Sign up</button>
+             </div>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+        <p>Already Have a Account? <a asp-controller="Home"asp-action="Login">Login</a></p>
+        </div>
+
+    </div>
+</form>
+<div asp-validation-summary="All"></div>
+
+
